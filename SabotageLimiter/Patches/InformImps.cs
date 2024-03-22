@@ -23,7 +23,7 @@ namespace SabotageLimiter
                     if (imp != null)
                     {
                         var text =  $"Attention, this lobby utilises a mod."
-                                  + $"You have {SetImpostors.SabCountsRemaining[id]} non-door sabotage uses remaining."
+                                  + $"You have {(imp.Data.IsDead ? 0 : SetImpostors.SabCountsRemaining[id])} non-door sabotage uses remaining."
                                   + $"You {CanSab()}."
                                   + "Do not talk about this message in chat.";
                         

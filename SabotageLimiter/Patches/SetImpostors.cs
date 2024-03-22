@@ -10,6 +10,8 @@ namespace SabotageLimiter
     {
         public static Dictionary<byte, int> SabCountsRemaining { get; set; } = new();
 
+        public static bool DeadCanSab { get; set; }
+
         [HarmonyPatch(typeof(ShipStatus), nameof(ShipStatus.Begin))]
         [HarmonyPostfix]
 
@@ -19,6 +21,8 @@ namespace SabotageLimiter
             PlayerControl.AllPlayerControls.ToArray()
                                            .Where(x => x.Data.Role.TeamType == RoleTeamTypes.Impostor)
                                            .Do(x => SabCountsRemaining.Add(x.PlayerId, SabotageLimiterPlugin.MaxSabCount.Value));
+
+            DeadCanSab = SabotageLimiterPlugin.DeadCanSab.Value;
         }
     }
 }

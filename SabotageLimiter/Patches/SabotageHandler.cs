@@ -1,5 +1,4 @@
 using HarmonyLib;
-using Reactor.Utilities;
 
 namespace SabotageLimiter
 {
@@ -15,7 +14,7 @@ namespace SabotageLimiter
             __state = null;
             if (!AmongUsClient.Instance.AmHost) return true;
             if (SetImpostors.SabCountsRemaining[player.PlayerId] == 0) return false;
-            if (player.Data.IsDead && !SabotageLimiterPlugin.DeadCanSab.Value) return false;
+            if (player.Data.IsDead && !SetImpostors.DeadCanSab) return false;
             __state = player;
             return true;
         }
