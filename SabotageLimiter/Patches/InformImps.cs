@@ -37,7 +37,7 @@ namespace SabotageLimiter
 
         public static string CanSab()
         {
-            if (SabotageLimiterPlugin.DeadCanSab.Value) return "can sabotage anything when dead.";
+            if (SetImpostors.DeadCanSab) return "can sabotage anything when dead.";
             return "can not sabotage anything except doors when dead.";
         }
     }
